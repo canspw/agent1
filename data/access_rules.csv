@@ -1,0 +1,4 @@
+role,purpose,download_allowed,approval_required,allowed_flag_column
+Marketing Analyst,Marketing Campaign,yes,yes,allowed_for_marketing
+Customer Service Rep,Customer Issue Resolution,no,no,allowed_for_customer_issue
+Operations Manager,Customer Issue Resolution,yes,yes,allowed_for_customer_issue

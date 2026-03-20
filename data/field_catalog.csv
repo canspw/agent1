@@ -1,0 +1,23 @@
+field_name,business_name,category,sensitivity,is_direct_identifier,is_sensitive_financial,allowed_for_marketing,allowed_for_customer_issue,masking_rule
+customer_id,Customer ID,identifier,medium,no,no,yes,yes,surrogate
+first_name,First Name,personal,high,yes,no,no,yes,drop
+last_name,Last Name,personal,high,yes,no,no,yes,drop
+email_address,Email Address,contact,high,yes,no,no,yes,drop
+phone_number,Phone Number,contact,high,yes,no,no,yes,drop
+home_address,Home Address,contact,high,yes,no,no,yes,drop
+city,City,location,medium,no,no,yes,yes,allow
+province,Province,location,low,no,no,yes,yes,allow
+postal_code,Postal Code,location,medium,no,no,no,yes,drop
+date_of_birth,Date of Birth,personal,high,yes,no,no,no,drop
+age_band,Age Band,demographic,medium,no,no,yes,yes,allow
+product_type,Product Type,product,low,no,no,yes,yes,allow
+tenure_months,Tenure Months,account,low,no,no,yes,yes,allow
+campaign_opt_in,Campaign Opt In,marketing,medium,no,no,yes,no,allow
+response_history,Response History,marketing,medium,no,no,yes,no,allow
+service_case_count,Service Case Count,service,medium,no,no,no,yes,allow
+issue_category,Issue Category,service,medium,no,no,no,yes,allow
+account_balance_band,Account Balance Band,financial,high,no,yes,no,yes,allow
+credit_card_number,Credit Card Number,financial,critical,yes,yes,no,no,drop
+card_last4,Card Last 4,financial,high,no,yes,no,yes,mask_last4
+churn_risk_band,Churn Risk Band,analytics,medium,no,no,yes,no,allow
+customer_segment,Customer Segment,analytics,low,no,no,yes,yes,allow

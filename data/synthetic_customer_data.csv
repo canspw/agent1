@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email_address,phone_number,home_address,city,province,postal_code,date_of_birth,age_band,product_type,tenure_months,campaign_opt_in,response_history,service_case_count,issue_category,account_balance_band,credit_card_number,card_last4,churn_risk_band,customer_segment
+C1001,Ava,Smith,ava.smith@example.com,4165551001,10 King St,Toronto,ON,M5H2N2,1988-02-14,35-44,Credit Card,48,yes,Responder,1,Billing,10k-25k,4111111111111111,1111,Medium,Affluent
+C1002,Liam,Patel,liam.patel@example.com,6475551002,22 Queen St,Mississauga,ON,L5B1M4,1992-06-21,25-34,Loan,24,no,Non-Responder,2,Service,25k-50k,4222222222222222,2222,High,Mass Market
+C1003,Noah,Chen,noah.chen@example.com,4375551003,75 Main St,Ottawa,ON,K1P1J1,1979-11-03,45-54,Mortgage,120,yes,Responder,0,,50k-100k,4333333333333333,3333,Low,Homeowner
+C1004,Emma,Brown,emma.brown@example.com,9055551004,8 Lake Rd,Hamilton,ON,L8P1A1,1985-09-10,35-44,Insurance,60,no,Non-Responder,3,Claim,10k-25k,4444444444444444,4444,Medium,Family
+C1005,Lucas,Wilson,lucas.wilson@example.com,2895551005,90 Bay St,Oakville,ON,L6J1A1,1998-01-30,25-34,Credit Card,12,yes,Responder,1,Payment,<10k,4555555555555555,5555,High,Young Professional
