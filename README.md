@@ -8,6 +8,9 @@ docker build --no-cache -t data-access-agent .
 
 docker run -p 8001:8000 data-access-agent
 docker run --rm -p 8000:8000 data-access-agent
+docker run --rm -p 8000:8000 \
+  -e GOOGLE_API_KEY=AQ.Ab8RN6IMe71HYO8OQkHmWOnHhUT_VMxWW__jB5jATGPCkFb65A \
+  data-access-agent
 
 http://localhost:8000
 
@@ -25,3 +28,4 @@ docker run --rm -p 8000:8000 -v $(pwd):/app data-access-agent-dev uvicorn app:ap
 docker run --rm -it data-access-agent sh
 then, "ls"
 
+export GOOGLE_API_KEY="your_api_key_here"

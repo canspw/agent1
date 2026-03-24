@@ -10,6 +10,8 @@ from pydantic import BaseModel
 from policy_engine import PolicyEngine
 from preview_generator import generate_preview
 
+from llm_extractor import extract_request
+
 app = FastAPI(title="Customer Data Access Agent POC")
 
 engine = PolicyEngine(
@@ -270,10 +272,46 @@ def health() -> dict:
 @app.post("/ingest-email", response_model=ParsedRequest)
 def ingest_email(email: EmailRequest) -> ParsedRequest:
     combined_text = f"{email.subject}\n{email.body}"
+    print(f"combined text: {combined_text}")
 
-    business_purpose = detect_business_purpose(combined_text)
-    requested_action = detect_requested_action(combined_text)
-    mentioned_data = detect_data_mentions(combined_text)
+    # from llm_extractor_v1 import extract_request
+
+    try:
+        llm_output = extract_request(email.subject, email.body)
+
+        print("DEBUG: LLM extraction succeeded")
+        print(f"DEBUG: LLM output = {llm_output}")
+
+        business_purpose = llm_output.get("business_purpose", "Unknown")
+        requested_action = llm_output.get("requested_action", "Unknown")
+        mentioned_data = llm_output.get("mentioned_data_categories", [])
+        confidence = llm_output.get("confidence", 0.5)
+
+        sensitive_flag = llm_output.get("contains_sensitive_data_request", False)
+        possible_sensitive_data_requested = mentioned_data if sensitive_flag else []
+
+        missing_information = llm_output.get("missing_information", [])
+
+    except Exception:
+        print("DEBUG: LLM extraction FAIL")
+        print(f"DEBUG: LLM output FAIL =")
+        # fallback to keyword logic
+        business_purpose = detect_business_purpose(combined_text)
+        requested_action = detect_requested_action(combined_text)
+        mentioned_data = detect_data_mentions(combined_text)
+        possible_sensitive_data_requested = [
+            f for f in mentioned_data if f in SENSITIVE_FIELDS
+        ]
+        missing_information = infer_missing_information(
+            body=email.body,
+            business_purpose=business_purpose,
+            requested_action=requested_action,
+        )
+        confidence = 0.4
+
+
+
+
     sensitive_mentions = [f for f in mentioned_data if f in SENSITIVE_FIELDS]
 
     missing_information = infer_missing_information(
