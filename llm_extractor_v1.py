@@ -2,9 +2,12 @@
 from google import genai
 import json
 from typing import Dict, Any
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configure API
-genai.configure(api_key="AQ.Ab8RN6IMe71HYO8OQkHmWOnHhUT_VMxWW__jB5jATGPCkFb65A")  # or use env var
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))  # or use env var
 
 MODEL_NAME = "gemini-2.5-flash-lite"  # cheap + fast
 

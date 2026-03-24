@@ -3,13 +3,16 @@ import json
 import re
 from typing import Any, Dict
 from google import genai
+from dotenv import load_dotenv
+
+load_dotenv()
 
 MODEL_NAME = "models/gemini-2.0-flash-lite"
 
 # client = genai.Client(
 #     api_key=os.environ.get("GEMINI_API_KEY") or os.environ["GOOGLE_API_KEY"]
 # )
-client = genai.Client(api_key="AQ.Ab8RN6IMe71HYO8OQkHmWOnHhUT_VMxWW__jB5jATGPCkFb65A")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 PROMPT_TEMPLATE = """
 You extract structured information from enterprise customer-data access requests.
